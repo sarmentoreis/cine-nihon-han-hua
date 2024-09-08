@@ -75,6 +75,7 @@ export const Welcome = () => {
         <animated.div className={styles.btn} style={{ ...styleBtn }}>
           <Button
             sx={{
+              borderColor: '#700917',
               background: '#700917',
               color: '#FFFFB7',
               fontFamily: 'Sawarabi Mincho", serif',
