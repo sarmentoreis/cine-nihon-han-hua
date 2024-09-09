@@ -1,54 +1,26 @@
-import { animated, useTransition } from '@react-spring/web';
-import { useState } from 'react';
+import { animated } from '@react-spring/web';
 import styles from './Welcome.module.css';
 import logoPtBr from '../../assets/logo-ptbr.svg';
 import logoJp from '../../assets/logo-jp.svg';
 import logoKr from '../../assets/logo-kr.svg';
 import logoCh from '../../assets/logo-ch.svg';
-import opening from '../../../public/opening.jpg';
-import fuji from '../../../public/fuji.jpg';
-import korea from '../../../public/korea.jpg';
-import china from '../../../public/china.jpg';
+import opening from '../../assets/opening.jpg';
+import fuji from '../../assets/fuji.jpg';
+import korea from '../../assets/korea.jpg';
+import china from '../../assets/china.jpg';
 import { Button } from '@mui/material';
+import { useTransitionImgs } from '../../hooks/useTransitionImgs';
+import { useTransitionLogos } from '../../hooks/useTransitionLogos';
+import { useTransitionBtn } from '../../hooks/useTransitionBtn';
 
-const imgs = [opening, fuji, korea, china];
-const logos = [logoPtBr, logoJp, logoKr, logoCh];
-const textButton = ['Entrar', '入口', '입구', '入口'];
+const imgs: string[] = [opening, fuji, korea, china];
+const logos: string[] = [logoPtBr, logoJp, logoKr, logoCh];
+const textButton: string[] = ['Entrar', '入口', '입구', '入口'];
 
-export const Welcome = () => {
-  const [index, set] = useState(0);
-
-  const transitionsImgs = useTransition(index, {
-    key: index,
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-    config: { duration: 4000 },
-    onRest: (_a, _b, item) => {
-      if (index === item) {
-        set((state) => (state + 1) % logos.length);
-      }
-    },
-    exitBeforeEnter: true,
-  });
-
-  const transitionsLogos = useTransition(index, {
-    key: index,
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-    config: { duration: 4000 },
-    exitBeforeEnter: true,
-  });
-
-  const transitionsBtn = useTransition(index, {
-    key: index,
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-    config: { duration: 4000 },
-    exitBeforeEnter: true,
-  });
+export const Welcome = (): JSX.Element => {
+  const { transitions: transitionsImgs } = useTransitionImgs(imgs);
+  const { transitions: transitionsLogos } = useTransitionLogos(logos);
+  const { transitions: transitionsBtn } = useTransitionBtn(textButton);
 
   return (
     <div className={styles.container}>
@@ -74,11 +46,12 @@ export const Welcome = () => {
       {transitionsBtn((styleBtn, k) => (
         <animated.div className={styles.btn} style={{ ...styleBtn }}>
           <Button
+            href="/home"
             sx={{
               borderColor: '#700917',
               background: '#700917',
               color: '#FFFFB7',
-              fontFamily: 'Sawarabi Mincho", serif',
+              fontFamily: 'Sawarabi Mincho',
             }}
             variant="outlined"
           >

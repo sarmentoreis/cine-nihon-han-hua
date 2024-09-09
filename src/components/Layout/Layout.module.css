@@ -1,12 +1,23 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .layout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  animation: fadeIn 0.5s ease-in;
 }
 
 main {
+  background-color: #a8a87e;
   flex: 1;
-  padding: 5rem 1rem;
-  margin-top: 4rem;
-  margin-bottom: 3rem;
+  padding: 5vw 1vh;
+  margin-top: 5vh;
+  margin-bottom: 2vh;
 }

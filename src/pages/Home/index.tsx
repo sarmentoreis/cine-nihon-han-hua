@@ -1,7 +1,14 @@
+import { useContext } from 'react';
+import styles from './Home.module.css';
+import { LanguageContext } from '../../contexts/LanguageContext';
+import { homeTranslate } from '../../utils/LanguagesDictionary/HomeTranslation';
+
 export const Home = () => {
+  const { language } = useContext(LanguageContext);
+
   return (
-    <div>
-      <h1>HOME</h1>
+    <div id={styles.home}>
+      <h1>{homeTranslate(language)}</h1>
     </div>
   );
 };

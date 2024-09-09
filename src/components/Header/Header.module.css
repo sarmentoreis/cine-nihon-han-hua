@@ -1,14 +1,15 @@
 .header {
   background-color: #222;
   color: white;
-  padding: 1rem;
+  padding: 1vw;
   text-align: center;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 1000;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .header img {
@@ -17,5 +18,14 @@
 
 .header h1 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: clamp(0.5em, 2vw, 1.5em);
+}
+
+@media (max-width: 600px) {
+  .header {
+    min-height: 5vh;
+  }
+  .header img {
+    width: 10vw;
+  }
 }
