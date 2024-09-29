@@ -1,3 +1,9 @@
+:root {
+  --main-color: #ffffb7;
+  --secondary-color: #222;
+  --layout-color: #a8a87e;
+}
+
 @font-face {
   font-family: 'Sawarabi Mincho';
   src:
@@ -10,5 +16,4 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Sawarabi Mincho';
-  color: #ffffb7;
 }

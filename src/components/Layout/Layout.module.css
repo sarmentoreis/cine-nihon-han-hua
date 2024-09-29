@@ -15,7 +15,7 @@
 }
 
 main {
-  background-color: #a8a87e;
+  background-color: var(--layout-color);
   flex: 1;
   padding: 5vw 1vh;
   margin-top: 5vh;

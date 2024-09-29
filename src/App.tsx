@@ -10,6 +10,7 @@ import { Home } from './pages/Home';
 import { Layout } from './components/Layout';
 import { NotFound } from './pages/NotFound';
 import { Welcome } from './pages/Welcome';
+import { LanguageProvider } from './contexts/LanguageContext';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/welcome',
-    element: <Welcome />, // Welcome fora do Layout
+    element: <Welcome />,
   },
   {
     path: '/',
@@ -38,6 +39,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <LanguageProvider>
+      <RouterProvider router={router} />
+    </LanguageProvider>
   </React.StrictMode>
 );
