@@ -5,10 +5,10 @@ import { footerTranslate } from '../../utils/LanguagesDictionary/FooterTranslati
 
 export const Footer = () => {
   const { language } = useContext(LanguageContext);
-
+  const date = new Date();
   return (
     <div className={styles.footer}>
-      <p>{footerTranslate(language)}</p>
+      <p>{footerTranslate(language, date.getFullYear())}</p>
     </div>
   );
 };

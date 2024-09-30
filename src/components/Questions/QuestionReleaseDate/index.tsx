@@ -1,7 +1,7 @@
 import { FormControl, FormLabel, Slider } from '@mui/material';
 import { formTranslate } from '../../../utils/LanguagesDictionary/FormTranslation';
 import { FC } from 'react';
-import { red, yellow } from '@mui/material/colors';
+import { red } from '@mui/material/colors';
 
 interface QuestionReleaseDateProps {
   language: string;

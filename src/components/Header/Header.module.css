@@ -1,6 +1,6 @@
 .header {
   background-color: var(--secondary-color);
-  color: var(--main-color);
+  color: var(--font-main-color);
   padding: 1vw;
   text-align: center;
   position: fixed;

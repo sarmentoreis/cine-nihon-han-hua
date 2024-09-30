@@ -5,7 +5,7 @@ import { RegionSwitch } from '../../StyledComponents/Switch';
 
 interface QuestionRegionProps {
   language: string;
-  onDataChange: (isAsian: boolean) => void;
+  onDataChange: (asian: boolean) => void;
 }
 
 export const QuestionRegion: FC<QuestionRegionProps> = ({
@@ -18,7 +18,13 @@ export const QuestionRegion: FC<QuestionRegionProps> = ({
   };
   return (
     <FormControlLabel
-      control={<RegionSwitch onChange={handleRegionChange} sx={{ m: 1 }} />}
+      control={
+        <RegionSwitch
+          defaultChecked
+          onChange={handleRegionChange}
+          sx={{ m: 1 }}
+        />
+      }
       label={formTranslate(language, 'region')}
     />
   );
