@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Button, Box, Snackbar } from '@mui/material';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { formTranslate } from '../../utils/LanguagesDictionary/FormTranslation';
@@ -11,29 +11,17 @@ import { QuestionReleaseDate } from '../Questions/QuestionReleaseDate';
 import { QuestionRegion } from '../Questions/QuestionRegion';
 import useSnackBar from '../../hooks/useSnackBar';
 import { errorTranslate } from '../../utils/LanguagesDictionary/ErrorTranslation';
-
-interface IFormData {
-  discovery: string;
-  age: boolean | null;
-  genre: string;
-  releaseYear: string;
-  asian: boolean;
-}
+import { useNavigate } from 'react-router-dom';
+import { FormDataContext, IFormData } from '../../contexts/FormContext';
 
 export const Form = () => {
   const { language } = useContext(LanguageContext);
   const { discoveryResponse, handleDiscoveryChange } = useDiscoveryQuestion();
   const { state, handleClick, handleClose, growTransition } = useSnackBar();
-  const [formData, setFormData] = useState<IFormData>({
-    discovery: '',
-    age: null,
-    genre: '',
-    releaseYear: '',
-    asian: true,
-  });
-
+  const formContext = useContext(FormDataContext);
+  const { formData, setFormData } = formContext || {};
+  const navigate = useNavigate();
   const handleDataChange = (data: Partial<IFormData>) => {
-    console.log(data);
     setFormData((prevData) => ({
       ...prevData,
       ...data,
@@ -59,6 +47,8 @@ export const Form = () => {
       handleClick(growTransition, errorTranslate(language, 'release'))();
       return;
     }
+
+    navigate('/media');
   };
 
   return (
@@ -100,7 +90,9 @@ export const Form = () => {
       <QuestionReleaseDate
         language={language}
         mediaType={discoveryResponse}
-        onDataChange={(value) => handleDataChange({ releaseYear: value })}
+        onDataChange={(value) =>
+          handleDataChange({ releaseYear: value, decade: Number(value + 10) })
+        }
       />
       <QuestionRegion
         language={language}
@@ -109,9 +101,9 @@ export const Form = () => {
       <Button
         sx={{
           marginTop: '3vh',
-          borderColor: '#700917',
-          background: '#700917',
-          color: '#FFFFB7',
+          borderColor: 'var(--main-color)',
+          background: 'var(--main-color)',
+          color: 'var(--font-main-color)',
           fontFamily: 'Sawarabi Mincho',
         }}
         variant="outlined"

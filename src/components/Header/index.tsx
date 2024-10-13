@@ -5,9 +5,12 @@ import { useContext } from 'react';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { headerTranslate } from '../../utils/LanguagesDictionary/HeaderTranslation';
 import { useScreenSize } from '../../hooks/useScreenSize';
+import { Link } from 'react-router-dom';
+import { FormDataContext } from '../../contexts/FormContext';
 
 export const Header = () => {
   const { language, setLanguage } = useContext(LanguageContext);
+  const { setFormData } = useContext(FormDataContext);
   const { windowDimension } = useScreenSize();
   let size = 50;
   const resize = () => {
@@ -18,7 +21,22 @@ export const Header = () => {
   resize();
   return (
     <div className={styles.header}>
-      <img src={logo} alt="" />
+      <Link to={'/home'} style={{ color: 'inherit', textDecoration: 'none' }}>
+        <img
+          onClick={() =>
+            setFormData({
+              age: null,
+              asian: true,
+              discovery: '',
+              decade: 0,
+              genre: '',
+              releaseYear: '',
+            })
+          }
+          src={logo}
+          alt="Cine Nihon-Han-Hua"
+        />
+      </Link>
       <BR
         title="Brazilian Portuguese"
         width={size}

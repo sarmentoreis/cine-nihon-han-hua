@@ -11,6 +11,8 @@ import { Layout } from './components/Layout';
 import { NotFound } from './pages/NotFound';
 import { Welcome } from './pages/Welcome';
 import { LanguageProvider } from './contexts/LanguageContext';
+import { MediaList } from './pages/MediaList';
+import { FormDataProvider } from './contexts/FormContext';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,10 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: 'media',
+        element: <MediaList />,
+      },
+      {
         path: '*',
         element: <NotFound />,
       },
@@ -40,7 +46,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <LanguageProvider>
-      <RouterProvider router={router} />
+      <FormDataProvider>
+        <RouterProvider router={router} />
+      </FormDataProvider>
     </LanguageProvider>
   </React.StrictMode>
 );

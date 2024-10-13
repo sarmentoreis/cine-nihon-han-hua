@@ -264,5 +264,33 @@ export const formTranslate = (language: string, id: string): string => {
         return 'Submeter';
     }
   }
+
+  if (id === 'overview') {
+    switch (language) {
+      case 'jp':
+        return '概要';
+      case 'kr':
+        return '개요';
+      case 'cn':
+        return '概述';
+      case 'pt':
+      default:
+        return 'Sinopse';
+    }
+  }
+
+  if (id === 'close-modal') {
+    switch (language) {
+      case 'jp':
+        return '閉じる';
+      case 'kr':
+        return '닫다';
+      case 'cn':
+        return '關閉';
+      case 'pt':
+      default:
+        return 'Fechar';
+    }
+  }
   return '';
 };
