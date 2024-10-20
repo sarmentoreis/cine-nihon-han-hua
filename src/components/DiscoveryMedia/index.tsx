@@ -161,16 +161,16 @@ const DiscoveryMedia = () => {
         <Box
           sx={{
             display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' }, // Coluna em mobile, linha em desktop
+            flexDirection: { xs: 'column', md: 'row' },
             position: 'absolute',
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: { xs: '90%', sm: '80%', md: 800 }, // Ajusta a largura para telas menores
+            width: { xs: '90%', sm: '80%', md: 800 },
             bgcolor: 'var(--main-color)',
             borderRadius: '8px',
             boxShadow: 24,
-            p: { xs: 2, sm: 4 }, // Ajuste de padding para telas menores
+            p: { xs: 2, sm: 4 },
           }}
         >
           {selectedMedia && (
@@ -178,8 +178,8 @@ const DiscoveryMedia = () => {
               <Box
                 sx={{
                   flex: 1,
-                  pr: { md: 2 }, // Padding direito apenas em telas médias ou maiores
-                  mb: { xs: 2, md: 0 }, // Margem inferior em telas pequenas para separar os elementos
+                  pr: { md: 2 },
+                  mb: { xs: 2, md: 0 },
                 }}
               >
                 <Typography
@@ -217,8 +217,8 @@ const DiscoveryMedia = () => {
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  width: { xs: '100%', md: 'auto' }, // Largura total em telas pequenas
-                  height: { xs: '200px', sm: '300px', md: '500px' }, // Ajuste de altura para dispositivos móveis
+                  width: { xs: '100%', md: 'auto' },
+                  height: { xs: '200px', sm: '300px', md: '500px' },
                 }}
               >
                 <iframe
