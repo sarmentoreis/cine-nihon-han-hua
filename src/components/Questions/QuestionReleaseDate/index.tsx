@@ -15,7 +15,7 @@ export const QuestionReleaseDate: FC<QuestionReleaseDateProps> = ({
   onDataChange,
 }) => {
   const date = new Date();
-  const handleReleaseDateChange = (e) => {
+  const handleReleaseDateChange = (e: any) => {
     const value = e.target.value;
     onDataChange(value);
   };

@@ -34,7 +34,7 @@ const DiscoveryMedia = () => {
   const [page, setPage] = useState(1);
   const [trailer, setTrailer] = useState('');
 
-  const changePage = (event: React.ChangeEvent<unknown>, value: number) => {
+  const changePage = (_event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
 

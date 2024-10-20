@@ -8,7 +8,6 @@ import {
 import { formTranslate } from '../../../utils/LanguagesDictionary/FormTranslation';
 import { FC } from 'react';
 import { red } from '@mui/material/colors';
-import { useScreenSize } from '../../../hooks/useScreenSize';
 
 interface QuestionTvProps {
   language: string;
