@@ -1,5 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
-import { fetchMovie, fetchTv, tmdb } from '../../services/axios';
+import {
+  fetchMovie,
+  fetchMovieTrailer,
+  fetchTv,
+  fetchTvTrailer,
+} from '../../services/axios';
 import {
   Button,
   Card,
@@ -27,6 +32,7 @@ const DiscoveryMedia = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
   const [page, setPage] = useState(1);
+  const [trailer, setTrailer] = useState('');
 
   const changePage = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
@@ -38,8 +44,8 @@ const DiscoveryMedia = () => {
       try {
         const response =
           formData.discovery === 'movie'
-            ? await fetchMovie(formData, page)
-            : await fetchTv(formData, page);
+            ? await fetchMovie(formData, page, language)
+            : await fetchTv(formData, page, language);
         setData(response!.data);
       } catch (err: any) {
         setError(err);
@@ -52,6 +58,27 @@ const DiscoveryMedia = () => {
       fetchData();
     }
   }, [formData, page]);
+
+  useEffect(() => {
+    if (selectedMedia && formData.discovery === 'movie') {
+      const fetchData = async () => {
+        const key = await fetchMovieTrailer(selectedMedia.id, language);
+        setTrailer(key!);
+      };
+      fetchData();
+    }
+    if (selectedMedia && formData.discovery === 'tv') {
+      const fetchData = async () => {
+        const key = await fetchTvTrailer(selectedMedia.id, language);
+        setTrailer(key!);
+      };
+      fetchData();
+    }
+  }, [isModalOpen]);
+
+  useEffect(() => {
+    setTrailer('');
+  }, [!isModalOpen]);
 
   if (loading)
     return (
@@ -115,7 +142,7 @@ const DiscoveryMedia = () => {
         </Grid2>
       )}
       <Pagination
-        count={data?.total_pages} // Define o número total de páginas
+        count={data?.total_pages}
         page={page}
         onChange={changePage}
         color="primary"
@@ -133,44 +160,79 @@ const DiscoveryMedia = () => {
       <Modal open={isModalOpen} onClose={closeModal}>
         <Box
           sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' }, // Coluna em mobile, linha em desktop
             position: 'absolute',
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: 400,
+            width: { xs: '90%', sm: '80%', md: 800 }, // Ajusta a largura para telas menores
             bgcolor: 'var(--main-color)',
             borderRadius: '8px',
             boxShadow: 24,
-            p: 4,
+            p: { xs: 2, sm: 4 }, // Ajuste de padding para telas menores
           }}
         >
           {selectedMedia && (
             <>
-              <Typography
-                variant="h5"
-                component="h2"
-                fontFamily={'inherit'}
-                color={'var(--font-main-color)'}
+              <Box
+                sx={{
+                  flex: 1,
+                  pr: { md: 2 }, // Padding direito apenas em telas médias ou maiores
+                  mb: { xs: 2, md: 0 }, // Margem inferior em telas pequenas para separar os elementos
+                }}
               >
-                {language !== 'pt'
-                  ? selectedMedia.original_title || selectedMedia.original_name
-                  : selectedMedia.title || selectedMedia.name}
-              </Typography>
-              <Typography
-                fontFamily={'inherit'}
-                color={'var(--font-main-color)'}
-                sx={{ mt: 2 }}
+                <Typography
+                  variant="h5"
+                  component="h2"
+                  fontFamily={'inherit'}
+                  color={'var(--font-main-color)'}
+                >
+                  {language !== 'pt'
+                    ? selectedMedia.original_title ||
+                      selectedMedia.original_name
+                    : selectedMedia.title || selectedMedia.name}
+                </Typography>
+                <Typography
+                  fontFamily={'inherit'}
+                  color={'var(--font-main-color)'}
+                  sx={{ fontSize: 'clamp(0.5em, 1vw, 1em)', mt: 2 }}
+                >
+                  {selectedMedia.overview}
+                </Typography>
+                <Button
+                  onClick={closeModal}
+                  sx={{
+                    paddingLeft: '0',
+                    color: 'var(--font-main-color)',
+                    mt: 3,
+                  }}
+                >
+                  {formTranslate(language, 'close-modal')}
+                </Button>
+              </Box>
+              <Box
+                sx={{
+                  flex: 1,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  width: { xs: '100%', md: 'auto' }, // Largura total em telas pequenas
+                  height: { xs: '200px', sm: '300px', md: '500px' }, // Ajuste de altura para dispositivos móveis
+                }}
               >
-                {selectedMedia.overview}
-              </Typography>
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={`https://www.youtube.com/embed/${trailer}`}
+                  title="Trailer"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  style={{ borderRadius: '8px' }}
+                ></iframe>
+              </Box>
             </>
           )}
-          <Button
-            onClick={closeModal}
-            sx={{ paddingLeft: '0', color: 'var(--font-main-color)', mt: 3 }}
-          >
-            {formTranslate(language, 'close-modal')}
-          </Button>
         </Box>
       </Modal>
     </div>

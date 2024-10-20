@@ -26,6 +26,7 @@ export const QuestionAge: FC<QuestionAgeProps> = ({
     <FormControl>
       <FormLabel
         sx={{
+          fontSize: 'clamp(0.7em, 1vw, 1em)',
           fontWeight: 'bold',
           color: 'black',
           transition: 'color 0.5s ease',
@@ -57,6 +58,11 @@ export const QuestionAge: FC<QuestionAgeProps> = ({
             />
           }
           label={formTranslate(language, 'age-options-y')}
+          sx={{
+            '& .MuiFormControlLabel-label': {
+              fontSize: 'clamp(0.7em, 1vw, 1em)',
+            },
+          }}
         />
         <FormControlLabel
           value="no"
@@ -70,6 +76,11 @@ export const QuestionAge: FC<QuestionAgeProps> = ({
             />
           }
           label={formTranslate(language, 'age-options-n')}
+          sx={{
+            '& .MuiFormControlLabel-label': {
+              fontSize: 'clamp(0.7em, 1vw, 1em)',
+            },
+          }}
         />
       </RadioGroup>
     </FormControl>

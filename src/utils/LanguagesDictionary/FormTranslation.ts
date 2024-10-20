@@ -198,14 +198,14 @@ export const formTranslate = (language: string, id: string): string => {
   if (id === 'genre-options-relaxed-sociable') {
     switch (language) {
       case 'jp':
-        return '可笑しい, 優雅な, 気安い, 社交する';
+        return '可笑しい, 優雅な, 気安い, 楽しいエンターテイメント愛好家';
       case 'kr':
-        return '재미있는, 우아한, 편안한, 창의적인, 사회의';
+        return '재미있는, 우아한, 편안한, 창의적인, 재미있는 엔터테인먼트 애호가';
       case 'cn':
-        return '有趣的, 優雅的, 便宜的, 社會的';
+        return '有趣的, 優雅的, 便宜的, 有趣的娛樂愛好者';
       case 'pt':
       default:
-        return 'Engraçada, Leve, Descontraída e Social';
+        return 'Engraçada, Leve, Descontraída e Amante de Entretenimento Divertido';
     }
   }
 

@@ -58,8 +58,8 @@ export const Form = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: 2,
-        width: 'auto',
+        gap: 1,
+        height: '50vh',
         margin: '2vh auto',
       }}
       onSubmit={handleSubmit}

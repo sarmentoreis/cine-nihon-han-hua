@@ -23,6 +23,7 @@ export const QuestionReleaseDate: FC<QuestionReleaseDateProps> = ({
     <FormControl>
       <FormLabel
         sx={{
+          fontSize: 'clamp(0.7em, 1vw, 1em)',
           fontWeight: 'bold',
           textAlign: 'center',
           color: 'black',

@@ -26,6 +26,7 @@ export const QuestionMovieGenre: FC<QuestionMovieProps> = ({
     <FormControl>
       <FormLabel
         sx={{
+          fontSize: 'clamp(0.7em, 1vw, 1em)',
           fontWeight: 'bold',
           textAlign: 'center',
           color: 'black',
@@ -58,6 +59,11 @@ export const QuestionMovieGenre: FC<QuestionMovieProps> = ({
             />
           }
           label={formTranslate(language, 'genre-options-visionary-adventure')}
+          sx={{
+            '& .MuiFormControlLabel-label': {
+              fontSize: 'clamp(0.7em, 1vw, 1em)',
+            },
+          }}
         />
         <FormControlLabel
           value="18|10749|10402|10751|36"
@@ -71,6 +77,11 @@ export const QuestionMovieGenre: FC<QuestionMovieProps> = ({
             />
           }
           label={formTranslate(language, 'genre-options-emotional-dreamer')}
+          sx={{
+            '& .MuiFormControlLabel-label': {
+              fontSize: 'clamp(0.7em, 1vw, 1em)',
+            },
+          }}
         />
         <FormControlLabel
           value="80|9648|99|10752|27"
@@ -87,6 +98,11 @@ export const QuestionMovieGenre: FC<QuestionMovieProps> = ({
             language,
             'genre-options-analytical-investigator'
           )}
+          sx={{
+            '& .MuiFormControlLabel-label': {
+              fontSize: 'clamp(0.7em, 1vw, 1em)',
+            },
+          }}
         />
         <FormControlLabel
           value="35|16|37|10770|10751"
@@ -100,6 +116,11 @@ export const QuestionMovieGenre: FC<QuestionMovieProps> = ({
             />
           }
           label={formTranslate(language, 'genre-options-relaxed-spirit')}
+          sx={{
+            '& .MuiFormControlLabel-label': {
+              fontSize: 'clamp(0.7em, 1vw, 1em)',
+            },
+          }}
         />
       </RadioGroup>
     </FormControl>

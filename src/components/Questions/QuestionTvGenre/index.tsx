@@ -8,6 +8,7 @@ import {
 import { formTranslate } from '../../../utils/LanguagesDictionary/FormTranslation';
 import { FC } from 'react';
 import { red } from '@mui/material/colors';
+import { useScreenSize } from '../../../hooks/useScreenSize';
 
 interface QuestionTvProps {
   language: string;
@@ -26,6 +27,7 @@ export const QuestionTvGenre: FC<QuestionTvProps> = ({
     <FormControl>
       <FormLabel
         sx={{
+          fontSize: 'clamp(0.7em, 1vw, 1em)',
           fontWeight: 'bold',
           textAlign: 'center',
           color: 'black',
@@ -58,6 +60,11 @@ export const QuestionTvGenre: FC<QuestionTvProps> = ({
             />
           }
           label={formTranslate(language, 'genre-options-curious-adventure')}
+          sx={{
+            '& .MuiFormControlLabel-label': {
+              fontSize: 'clamp(0.7em, 1vw, 0.9em)',
+            },
+          }}
         />
         <FormControlLabel
           value="18|10766|10751|10762|16"
@@ -71,6 +78,11 @@ export const QuestionTvGenre: FC<QuestionTvProps> = ({
             />
           }
           label={formTranslate(language, 'genre-options-sensitive-dreamer')}
+          sx={{
+            '& .MuiFormControlLabel-label': {
+              fontSize: 'clamp(0.7em, 1vw, 0.9em)',
+            },
+          }}
         />
         <FormControlLabel
           value="80|99|10763|9648|10768"
@@ -84,6 +96,11 @@ export const QuestionTvGenre: FC<QuestionTvProps> = ({
             />
           }
           label={formTranslate(language, 'genre-options-rational-investigator')}
+          sx={{
+            '& .MuiFormControlLabel-label': {
+              fontSize: 'clamp(0.7em, 1vw, 0.9em)',
+            },
+          }}
         />
         <FormControlLabel
           value="35|10764|10767|16|10762"
@@ -97,6 +114,11 @@ export const QuestionTvGenre: FC<QuestionTvProps> = ({
             />
           }
           label={formTranslate(language, 'genre-options-relaxed-sociable')}
+          sx={{
+            '& .MuiFormControlLabel-label': {
+              fontSize: 'clamp(0.7em, 1vw, 0.9em)',
+            },
+          }}
         />
       </RadioGroup>
     </FormControl>

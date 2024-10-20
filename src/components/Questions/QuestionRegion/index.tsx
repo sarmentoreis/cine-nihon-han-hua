@@ -26,6 +26,11 @@ export const QuestionRegion: FC<QuestionRegionProps> = ({
         />
       }
       label={formTranslate(language, 'region')}
+      sx={{
+        '& .MuiFormControlLabel-label': {
+          fontSize: 'clamp(0.7em, 1vw, 1em)',
+        },
+      }}
     />
   );
 };

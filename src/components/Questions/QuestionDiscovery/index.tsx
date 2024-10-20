@@ -32,6 +32,7 @@ export const QuestionDiscovery: FC<QuestionDiscoveryProps> = ({
     <FormControl>
       <FormLabel
         sx={{
+          fontSize: 'clamp(0.7em, 1vw, 1em)',
           fontWeight: 'bold',
           textAlign: 'center',
           color: 'black',
@@ -64,6 +65,11 @@ export const QuestionDiscovery: FC<QuestionDiscoveryProps> = ({
             />
           }
           label={formTranslate(language, 'discovery-options-movie')}
+          sx={{
+            '& .MuiFormControlLabel-label': {
+              fontSize: 'clamp(0.7em, 1vw, 1em)',
+            },
+          }}
         />
         <FormControlLabel
           value="tv"
@@ -77,6 +83,11 @@ export const QuestionDiscovery: FC<QuestionDiscoveryProps> = ({
             />
           }
           label={formTranslate(language, 'discovery-options-tv')}
+          sx={{
+            '& .MuiFormControlLabel-label': {
+              fontSize: 'clamp(0.7em, 1vw, 1em)',
+            },
+          }}
         />
       </RadioGroup>
     </FormControl>
