@@ -3,4 +3,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 60vh;
+}
+
+.notFound img {
+  width: 400px;
+}
+
+.notFound p {
+  font-weight: bold;
+  text-align: center;
+}
+
+@media (max-width: 650px) and (pointer: coarse) {
+  .notFound img {
+    width: 200px;
+  }
 }
